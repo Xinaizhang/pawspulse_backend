@@ -12,12 +12,12 @@ def signin(request):
     return HttpResponse("登录")
 
 
-from app.models import User
+from app.models import user
 
 
 def orm(request):
     # 测试ORM操作表中的数据
-    User.objects.create(email="mingyu@example.com",
+    user.objects.create(email="mingyu@example.com",
                         nickname="mingyu",
                         phoneNumber="1234567899",
                         passwordHash=make_password("2333"),
