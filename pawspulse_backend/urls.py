@@ -27,4 +27,5 @@ router.register(r'posts', PostViewSet, basename='post')
 urlpatterns = [
     path('login/', LoginView.as_view()),
     path('', include(router.urls)),
+    path('users/<int:user_id>/posts/', PostViewSet.as_view({'get': 'posts_by_user'}), name='user_posts'),
 ]
