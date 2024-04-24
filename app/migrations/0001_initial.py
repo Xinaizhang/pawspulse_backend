@@ -5,7 +5,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
     dependencies = [
@@ -22,8 +21,8 @@ class Migration(migrations.Migration):
                 ('careInstruction', models.TextField()),
             ],
             options={
-                'verbose_name': 'pet encyclopedia',
-                'verbose_name_plural': 'pet encyclopedias',
+                'verbose_name': 'Pet encyclopedia',
+                'verbose_name_plural': 'Pet encyclopedias',
             },
         ),
         migrations.CreateModel(
@@ -34,8 +33,8 @@ class Migration(migrations.Migration):
                 ('petFriendId2', models.IntegerField()),
             ],
             options={
-                'verbose_name': 'pet friendship',
-                'verbose_name_plural': 'pet friendships',
+                'verbose_name': 'Pet friendship',
+                'verbose_name_plural': 'Pet friendships',
             },
         ),
         migrations.CreateModel(
@@ -50,8 +49,8 @@ class Migration(migrations.Migration):
                 ('weight', models.FloatField()),
             ],
             options={
-                'verbose_name': 'pet profile',
-                'verbose_name_plural': 'pet profiles',
+                'verbose_name': 'Pet profile',
+                'verbose_name_plural': 'Pet profiles',
             },
         ),
         migrations.CreateModel(
@@ -67,7 +66,7 @@ class Migration(migrations.Migration):
                 ('address', models.CharField(max_length=255)),
             ],
             options={
-                'verbose_name': 'user',
+                'verbose_name': 'User',
                 'verbose_name_plural': 'users',
             },
         ),
@@ -79,8 +78,8 @@ class Migration(migrations.Migration):
                 ('friendId2', models.IntegerField()),
             ],
             options={
-                'verbose_name': 'user friendship',
-                'verbose_name_plural': 'user friendships',
+                'verbose_name': 'User friendship',
+                'verbose_name_plural': 'User friendships',
             },
         ),
         migrations.CreateModel(
@@ -89,27 +88,30 @@ class Migration(migrations.Migration):
                 ('diaryId', models.AutoField(primary_key=True, serialize=False)),
                 ('content', models.TextField()),
                 ('weight', models.FloatField()),
-                ('pet', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='care_diaries', to='app.petprofile')),
+                ('Pet', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='care_diaries',
+                                          to='app.petprofile')),
             ],
             options={
-                'verbose_name': 'pet care diary',
-                'verbose_name_plural': 'pet care diaries',
+                'verbose_name': 'Pet care diary',
+                'verbose_name_plural': 'Pet care diaries',
             },
         ),
         migrations.AddField(
             model_name='petprofile',
-            name='user',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='pet_profiles', to='app.user'),
+            name='User',
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='pet_profiles',
+                                    to='app.User'),
         ),
         migrations.CreateModel(
             name='Notification',
             fields=[
                 ('notificationId', models.AutoField(primary_key=True, serialize=False)),
                 ('message', models.TextField()),
-                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='notifications', to='app.user')),
+                ('User', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='notifications',
+                                           to='app.User')),
             ],
             options={
-                'verbose_name': 'notification',
+                'verbose_name': 'Notification',
                 'verbose_name_plural': 'notifications',
             },
         ),
@@ -118,7 +120,8 @@ class Migration(migrations.Migration):
             fields=[
                 ('postId', models.AutoField(primary_key=True, serialize=False)),
                 ('content', models.TextField()),
-                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='forum_posts', to='app.user')),
+                ('User', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='forum_posts',
+                                           to='app.User')),
             ],
             options={
                 'verbose_name': 'forum post',
@@ -131,12 +134,15 @@ class Migration(migrations.Migration):
                 ('messageId', models.AutoField(primary_key=True, serialize=False)),
                 ('messageContent', models.TextField()),
                 ('timestamp', models.DateTimeField()),
-                ('receiver', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='received_messages', to='app.user')),
-                ('sender', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='sent_messages', to='app.user')),
+                ('receiver',
+                 models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='received_messages',
+                                   to='app.User')),
+                ('sender', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='sent_messages',
+                                             to='app.User')),
             ],
             options={
-                'verbose_name': 'user message',
-                'verbose_name_plural': 'user messages',
+                'verbose_name': 'User message',
+                'verbose_name_plural': 'User messages',
             },
         ),
         migrations.CreateModel(
@@ -144,9 +150,14 @@ class Migration(migrations.Migration):
             fields=[
                 ('serviceId', models.AutoField(primary_key=True, serialize=False)),
                 ('status', models.IntegerField(choices=[(0, 'Pending'), (1, 'Accepted'), (2, 'Rejected')])),
-                ('pet', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='walk_services', to='app.petprofile')),
-                ('provider', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='provided_walks', to='app.user')),
-                ('requester', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='requested_walks', to='app.user')),
+                ('Pet', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='walk_services',
+                                          to='app.petprofile')),
+                ('provider',
+                 models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='provided_walks',
+                                   to='app.User')),
+                ('requester',
+                 models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='requested_walks',
+                                   to='app.User')),
             ],
             options={
                 'verbose_name': 'walk service',
