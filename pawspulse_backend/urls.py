@@ -19,12 +19,14 @@ from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from app.views import UserViewSet, LoginView
 from community.views import PostViewSet
+from django.contrib import admin
 
 router = DefaultRouter()
 router.register(r'users', UserViewSet, basename='User')
 router.register(r'posts', PostViewSet, basename='post')
 
 urlpatterns = [
+    path('admin/', admin.site.urls),
     path('login/', LoginView.as_view()),
     path('', include(router.urls)),
     path('users/<int:user_id>/posts/', PostViewSet.as_view({'get': 'posts_by_user'}), name='user_posts'),
