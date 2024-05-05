@@ -53,5 +53,6 @@ class Like(models.Model):
     # 联合约束-保证一个用户只能对一个帖子点赞一次
     class Meta:
         constraints = [
-            models.UniqueConstraint(fields=['User', 'post'], name='unique_like_post')
+            models.UniqueConstraint(fields=['user', 'post'], name='unique_like_post')
         ]
+        print(constraints)

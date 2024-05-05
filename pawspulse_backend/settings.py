@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -24,7 +25,7 @@ SECRET_KEY = 'django-insecure-o-c+9b+dwsbxzkec4h=v_4h7m6s!=w*(#lse_wu84-tszogp-q
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['192.168.110.128', '127.0.0.1']
 
 # Application definition
 
@@ -39,6 +40,8 @@ INSTALLED_APPS = [
     # 注册app
     'app.apps.AppConfig',
     'community.apps.CommunityConfig',
+    'pets.apps.PetsConfig',
+    'help.apps.HelpConfig',
 
 ]
 
@@ -138,3 +141,14 @@ REST_FRAMEWORK = {
         "ext.auth.NoAuthentication"
     ]
 }
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.163.com'
+EMAIL_PORT = 465  # 使用 25 端口时，可以设置 EMAIL_USE_TLS = True
+EMAIL_USE_SSL = True  # 使用 SSL/TLS
+EMAIL_HOST_USER = 'zhangxinai_02@163.com'  # 替换为你的网易邮箱地址
+EMAIL_HOST_PASSWORD = 'QGCHKMMYWFOXLXUS'  # 替换为你的密码或授权码
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER

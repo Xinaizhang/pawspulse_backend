@@ -17,17 +17,22 @@ Including another URLconf
 
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
-from app.views import UserViewSet, LoginView
 from community.views import PostViewSet
+from pets.views import PetViewSet
 from django.contrib import admin
 
-router = DefaultRouter()
-router.register(r'users', UserViewSet, basename='User')
-router.register(r'posts', PostViewSet, basename='post')
+from django.conf import settings
+from django.conf.urls.static import static
 
-urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('login/', LoginView.as_view()),
-    path('', include(router.urls)),
-    path('users/<int:user_id>/posts/', PostViewSet.as_view({'get': 'posts_by_user'}), name='user_posts'),
-]
+router = DefaultRouter()
+# router.register(r'users', UserViewSet, basename='User')
+router.register(r'posts', PostViewSet, basename='post')
+router.register(r'pets', PetViewSet, basename='pet')
+
+urlpatterns = [path('admin/', admin.site.urls),
+               path('app/', include('app.urls')),  # app中的urls
+              
+               path('', include(router.urls)),
+               path('posts/user/<int:user_id>/', PostViewSet.as_view({'get': 'posts_by_user'}), name='user_posts'),
+               path('pets/user/<int:user_id>/', PetViewSet.as_view({'get': 'pet_by_user'}), name='user_pets'),
+               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)  # 用于提供媒体文件
