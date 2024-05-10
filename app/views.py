@@ -4,7 +4,10 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import viewsets, status
 from rest_framework.parsers import MultiPartParser, FormParser
-from django.shortcuts import get_object_or_404
+from rest_framework_simplejwt.tokens import RefreshToken, AccessToken
+from rest_framework.permissions import IsAuthenticated
+from rest_framework_simplejwt.authentication import JWTAuthentication
+from django.db import transaction
 from .serializers import *
 from .models import *
 
@@ -30,6 +33,7 @@ def send_verification_code_email(email, code):
     send_mail(subject, message, 'zhangxinai_02@163.com', [email], fail_silently=False)
 
 
+# 发送验证码
 class EmailVerificationView(APIView):
     authentication_classes = []
 
@@ -64,10 +68,10 @@ class UserRegistrationView(APIView):
             # 更新邮箱验证状态
             EmailVerification.objects.filter(email=user.email).update(is_verified=True)
             response_data = {
-                "user_id": user.user_id,
+                "id": user.id,
                 "email": user.email,
                 "nickname": user.nickname,
-                "password_hash": user.password_hash,
+                "password": user.password,
                 "created_at": user.created_at
             }
             return Response(data_schema(status.HTTP_201_CREATED, "用户注册成功", response_data),
@@ -76,64 +80,40 @@ class UserRegistrationView(APIView):
                         status=status.HTTP_400_BAD_REQUEST)
 
 
-# 用户提交注册信息
-# class UserRegistrationView(APIView):
-#     authentication_classes = []
-#
-#     def post(self, request, *args, **kwargs):
-#         serializer = UserRegistrationSerializer(data=request.data)
-#         if serializer.is_valid():
-#             user = serializer.save()
-#             response_data = {
-#                 "user_id": user.user_id,
-#                 "email": user.email,
-#                 "nickname": user.nickname,
-#                 "password_hash": user.password_hash,
-#                 "created_at": user.created_at
-#             }
-#             return Response(data_schema(status.HTTP_201_CREATED, "用户注册成功，请查收邮箱验证码", response_data),
-#                             status=status.HTTP_201_CREATED)
-#         return Response(data_schema(status.HTTP_400_BAD_REQUEST, "数据无效", serializer.errors),
-#                         status=status.HTTP_400_BAD_REQUEST)
-#
-#
-# # 验证邮箱验证码
-# class VerifyCodeView(APIView):
-#     authentication_classes = []
-#
-#     def post(self, request, *args, **kwargs):
-#         email = request.data.get('email')
-#         verification_code = request.data.get('verification_code')
-#
-#         # 从数据库中获取用户
-#         user = get_object_or_404(User, email=email)
-#
-#         # 检查验证码
-#         if user.verification_code == verification_code:
-#             user.verification_code = None  # 清除验证码
-#             user.save()
-#             return Response({
-#                 "code": status.HTTP_200_OK,
-#                 "message": "验证码验证成功，用户已激活",
-#                 "data": {
-#                     "user_id": user.user_id,
-#                     "email": user.email,
-#                     "nickname": user.nickname,
-#                     "created_at": user.created_at,
-#                 }
-#             }, status=status.HTTP_200_OK)
-#         else:
-#             return Response({
-#                 "code": status.HTTP_400_BAD_REQUEST,
-#                 "message": "验证码错误或已过期",
-#                 "data": None
-#             }, status=status.HTTP_400_BAD_REQUEST)
+# 用户登录 - 接受用户提供的用户名或邮箱和密码，验证用户身份并返回 JWT Token。
+class LoginView(APIView):
+    authentication_classes = []  # 登录无需身份认证
+
+    def post(self, request, *args, **kwargs):
+        # 使用登录序列化器验证输入的数据
+        serializer = LoginSerializer(data=request.data)
+        if serializer.is_valid():
+            user = serializer.validated_data['user']
+
+            # 生成 JWT Token
+            refresh = RefreshToken.for_user(user)
+            access = AccessToken.for_user(user)
+            response_data = {
+                'refresh': str(refresh),
+                'access': str(access),
+                'id': user.id,
+                'nickname': user.nickname,
+                'email': user.email
+            }
+
+            return Response(data_schema(status.HTTP_200_OK, '登录成功', response_data),
+                            status=status.HTTP_200_OK)
+        return Response(data_schema(status.HTTP_400_BAD_REQUEST, '登录失败', serializer.errors),
+                        status=status.HTTP_400_BAD_REQUEST)
 
 
 class UserViewSet(viewsets.ModelViewSet):
     authentication_classes = []
     queryset = User.objects.all()
     serializer_class = UserSerializer
+
+    # authentication_classes = [JWTAuthentication]
+    # permission_classes = [IsAuthenticated]
 
     def create(self, request, *args, **kwargs):
         """创建用户"""
@@ -156,20 +136,31 @@ class UserViewSet(viewsets.ModelViewSet):
 
     def destroy(self, request, *args, **kwargs):
         """删除用户"""
+        user = self.request.user  # Assuming user is logged in and verified
         instance = self.get_object()
+
+        # Check if the requesting user is allowed to delete this user
+        if user != instance and not user.is_superuser:
+            return Response(data_schema(status.HTTP_403_FORBIDDEN, "无权限删除此用户"),
+                            status=status.HTTP_403_FORBIDDEN)
+
         try:
-            self.perform_destroy(instance)
+            with transaction.atomic():
+                # Delete associated EmailVerification record
+                EmailVerification.objects.filter(email=instance.email).delete()
+                # Delete the User instance
+                self.perform_destroy(instance)
             return Response(data_schema(status.HTTP_204_NO_CONTENT, "成功注销用户"),
                             status=status.HTTP_204_NO_CONTENT)
         except User.DoesNotExist:
             return Response(data_schema(status.HTTP_404_NOT_FOUND, "用户不存在"),
                             status=status.HTTP_404_NOT_FOUND)
-        except Exception:
-            return Response(data_schema(status.HTTP_500_INTERNAL_SERVER_ERROR, "删除用户失败"),
+        except Exception as e:
+            return Response(data_schema(status.HTTP_500_INTERNAL_SERVER_ERROR, f"删除用户失败: {str(e)}"),
                             status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
     def retrieve(self, request, *args, **kwargs):
-        """根据 user_id 获取单个用户的详细信息"""
+        """根据 id 获取单个用户的详细信息"""
         try:
             instance = self.get_object()
             serializer = self.get_serializer(instance)
@@ -188,8 +179,8 @@ class UploadAvatarView(APIView):
     parser_classes = [MultiPartParser, FormParser]
 
     def post(self, request, *args, **kwargs):
-        user_id = kwargs.get('user_id')
-        user = User.objects.filter(user_id=user_id).first()
+        id = kwargs.get('id')
+        user = User.objects.filter(id=id).first()
         if not user:
             return Response(data_schema(status.HTTP_404_NOT_FOUND, "用户不存在"),
                             status=status.HTTP_404_NOT_FOUND)
@@ -209,8 +200,8 @@ class UploadBackgroundView(APIView):
     parser_classes = [MultiPartParser, FormParser]
 
     def post(self, request, *args, **kwargs):
-        user_id = kwargs.get('user_id')
-        user = User.objects.filter(user_id=user_id).first()
+        id = kwargs.get('id')
+        user = User.objects.filter(id=id).first()
         if not user:
             return Response(data_schema(status.HTTP_404_NOT_FOUND, "用户不存在"),
                             status=status.HTTP_404_NOT_FOUND)

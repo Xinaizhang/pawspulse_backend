@@ -16,8 +16,8 @@ class Pet(models.Model):
     species_id = models.IntegerField(verbose_name="品种")
     # 性别（0-母 1-公 2-其他）
     sex = models.IntegerField(verbose_name="性别")
-    # 年龄
-    age = models.IntegerField(verbose_name="年龄")
+    # 出生日期
+    birth_date = models.DateField(verbose_name="出生日期")
     # 体重
     weight = models.FloatField(verbose_name="体重")
     # 宠物身份证二维码

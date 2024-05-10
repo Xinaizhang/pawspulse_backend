@@ -4,6 +4,7 @@ from django.contrib.auth.hashers import make_password
 from .models import *
 
 
+# 邮箱验证码序列化器
 class EmailVerificationSerializer(serializers.ModelSerializer):
     email = serializers.EmailField(required=True)  # 添加格式验证
 
@@ -12,6 +13,7 @@ class EmailVerificationSerializer(serializers.ModelSerializer):
         fields = ['email']
 
 
+# 用户注册序列化器
 class UserRegistrationSerializer(serializers.ModelSerializer):
     email = serializers.EmailField()
     password = serializers.CharField(write_only=True)
@@ -36,34 +38,40 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
         validated_data.pop('verification_code')
         password = validated_data.pop('password')
         user = User(**validated_data)
-        user.password_hash = make_password(password)
+        user.set_password(password)
         user.save()
         return user
 
 
-# def generate_verification_code(length=6):
-#     import random
-#     return ''.join(random.choices('0123456789', k=length))
-#
-#
-# def send_verification_code_email(email, code):
-#     from django.core.mail import send_mail
-#     subject = '欢迎注册PawsPulse账号'
-#     message = f'欢迎使用邮箱注册PawsPulse账号，账号的验证码为：{code}。\n注意，请不要轻易将此验证码告知他人。若此内容非您操作，请忽视此条信息。'
-#     send_mail(
-#         subject,
-#         message,
-#         'zhangxinai_02@163.com',  # 替换为你的网易邮箱地址
-#         [email],
-#         fail_silently=False,
-#     )
+# 登录序列化器
+class LoginSerializer(serializers.Serializer):
+    identifier = serializers.CharField()  # 用户名或邮箱字段
+    password = serializers.CharField()  # 密码字段
+
+    def validate(self, data):
+        identifier = data['identifier']
+        password = data['password']
+
+        # 查找用户，可通过昵称或邮箱登录
+        user = User.objects.filter(email=identifier).first() or User.objects.filter(nickname=identifier).first()
+
+        if not user:
+            raise serializers.ValidationError('用户不存在')
+
+        # 验证密码是否匹配
+        if not user.check_password(password):
+            raise serializers.ValidationError('密码错误')
+
+        data['user'] = user
+        return data
 
 
+# 用户序列化器
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ['user_id', 'phone_number', 'email', 'nickname', 'avatar', 'background', 'address', 'password_hash',
-                  'created_at']
+        fields = ['id', 'phone_number', 'email', 'nickname', 'avatar', 'background', 'address', 'password',
+                  'created_at', 'signature']
 
     def create(self, validated_data):
         user_instance = User.objects.create(**validated_data)
