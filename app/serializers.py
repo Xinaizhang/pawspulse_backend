@@ -68,19 +68,33 @@ class LoginSerializer(serializers.Serializer):
 
 # 用户序列化器
 class UserSerializer(serializers.ModelSerializer):
+    password = serializers.CharField(write_only=True, required=False)
+
     class Meta:
         model = User
         fields = ['id', 'phone_number', 'email', 'nickname', 'avatar', 'background', 'address', 'password',
                   'created_at', 'signature']
+        extra_kwargs = {
+            'password': {'write_only': True, 'required': False}
+        }
 
     def create(self, validated_data):
-        user_instance = User.objects.create(**validated_data)
-        return user_instance
+        user = User.objects.create_user(**validated_data)
+        return user
 
     def update(self, instance, validated_data):
-        instance.phone_number = validated_data.get('phone_number', instance.phone_number)
+        instance.email = validated_data.get('email', instance.email)
         instance.nickname = validated_data.get('nickname', instance.nickname)
+        instance.address = validated_data.get('address', instance.address)
+        instance.phone_number = validated_data.get('phone_number', instance.phone_number)
+        instance.signature = validated_data.get('signature', instance.signature)
         instance.avatar = validated_data.get('avatar', instance.avatar)
         instance.background = validated_data.get('background', instance.background)
+
+        # Update the password only if it's provided
+        password = validated_data.get('password')
+        if password:
+            instance.set_password(password)
+
         instance.save()
         return instance

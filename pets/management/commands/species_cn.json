@@ -1,0 +1,1021 @@
+{
+  "cats": [
+    {
+      "species_id": 1,
+      "species_name": "abyssinian",
+      "species_name_cn": "阿比西尼亚猫"
+    },
+    {
+      "species_id": 2,
+      "species_name": "american bobtail",
+      "species_name_cn": "美国短尾猫"
+    },
+    {
+      "species_id": 3,
+      "species_name": "american curl",
+      "species_name_cn": "美国卷耳猫"
+    },
+    {
+      "species_id": 4,
+      "species_name": "american ringtail",
+      "species_name_cn": "美国环尾猫"
+    },
+    {
+      "species_id": 5,
+      "species_name": "american shorthair",
+      "species_name_cn": "美国短毛猫"
+    },
+    {
+      "species_id": 6,
+      "species_name": "american wirehair",
+      "species_name_cn": "美国刚毛猫"
+    },
+    {
+      "species_id": 7,
+      "species_name": "arabian mau",
+      "species_name_cn": "阿拉伯猫"
+    },
+    {
+      "species_id": 8,
+      "species_name": "asian semi-longhair",
+      "species_name_cn": "亚洲半长毛猫"
+    },
+    {
+      "species_id": 9,
+      "species_name": "australian mist",
+      "species_name_cn": "澳大利亚雾猫"
+    },
+    {
+      "species_id": 10,
+      "species_name": "balinese",
+      "species_name_cn": "巴厘猫"
+    },
+    {
+      "species_id": 11,
+      "species_name": "bambino",
+      "species_name_cn": "班比诺猫"
+    },
+    {
+      "species_id": 12,
+      "species_name": "bengal",
+      "species_name_cn": "孟加拉猫"
+    },
+    {
+      "species_id": 13,
+      "species_name": "birman",
+      "species_name_cn": "缅甸猫"
+    },
+    {
+      "species_id": 14,
+      "species_name": "bombay",
+      "species_name_cn": "孟买猫"
+    },
+    {
+      "species_id": 15,
+      "species_name": "brazilian shorthair",
+      "species_name_cn": "巴西短毛猫"
+    },
+    {
+      "species_id": 16,
+      "species_name": "british longhair",
+      "species_name_cn": "英国长毛猫"
+    },
+    {
+      "species_id": 17,
+      "species_name": "british shorthair",
+      "species_name_cn": "英国短毛猫"
+    },
+    {
+      "species_id": 18,
+      "species_name": "burmese",
+      "species_name_cn": "缅甸猫"
+    },
+    {
+      "species_id": 19,
+      "species_name": "burmilla",
+      "species_name_cn": "布米拉猫"
+    },
+    {
+      "species_id": 20,
+      "species_name": "california spangled",
+      "species_name_cn": "加州闪星猫"
+    },
+    {
+      "species_id": 21,
+      "species_name": "chantilly-tiffany",
+      "species_name_cn": "尚蒂伊蒂凡尼猫"
+    },
+    {
+      "species_id": 22,
+      "species_name": "chartreux",
+      "species_name_cn": "夏特尔猫"
+    },
+    {
+      "species_id": 23,
+      "species_name": "chausie",
+      "species_name_cn": "乔西猫"
+    },
+    {
+      "species_id": 24,
+      "species_name": "chinese li hua",
+      "species_name_cn": "中国狸花猫"
+    },
+    {
+      "species_id": 25,
+      "species_name": "colorpoint shorthair",
+      "species_name_cn": "重点色短毛猫"
+    },
+    {
+      "species_id": 26,
+      "species_name": "cornish rex",
+      "species_name_cn": "康沃尔卷毛猫"
+    },
+    {
+      "species_id": 27,
+      "species_name": "devon rex",
+      "species_name_cn": "德文卷毛猫"
+    },
+    {
+      "species_id": 28,
+      "species_name": "donskoy",
+      "species_name_cn": "顿斯科伊猫"
+    },
+    {
+      "species_id": 29,
+      "species_name": "dwelf",
+      "species_name_cn": "德威尔夫猫"
+    },
+    {
+      "species_id": 30,
+      "species_name": "egyptian mau",
+      "species_name_cn": "埃及猫"
+    },
+    {
+      "species_id": 31,
+      "species_name": "european burmese",
+      "species_name_cn": "欧洲缅甸猫"
+    },
+    {
+      "species_id": 32,
+      "species_name": "exotic shorthair",
+      "species_name_cn": "异国短毛猫"
+    },
+    {
+      "species_id": 33,
+      "species_name": "foldex",
+      "species_name_cn": "折耳猫"
+    },
+    {
+      "species_id": 34,
+      "species_name": "german rex",
+      "species_name_cn": "德国卷毛猫"
+    },
+    {
+      "species_id": 35,
+      "species_name": "havana brown",
+      "species_name_cn": "哈瓦那棕猫"
+    },
+    {
+      "species_id": 36,
+      "species_name": "highlander",
+      "species_name_cn": "高地猫"
+    },
+    {
+      "species_id": 37,
+      "species_name": "himalayan",
+      "species_name_cn": "喜马拉雅猫"
+    },
+    {
+      "species_id": 38,
+      "species_name": "japanese bobtail",
+      "species_name_cn": "日本短尾猫"
+    },
+    {
+      "species_id": 39,
+      "species_name": "javanese",
+      "species_name_cn": "爪哇猫"
+    },
+    {
+      "species_id": 40,
+      "species_name": "kanaani",
+      "species_name_cn": "卡纳尼猫"
+    },
+    {
+      "species_id": 41,
+      "species_name": "khao manee",
+      "species_name_cn": "考曼尼猫"
+    },
+    {
+      "species_id": 42,
+      "species_name": "kinkalow",
+      "species_name_cn": "金卡罗猫"
+    },
+    {
+      "species_id": 43,
+      "species_name": "korat",
+      "species_name_cn": "科拉特猫"
+    },
+    {
+      "species_id": 44,
+      "species_name": "kurilian bobtail",
+      "species_name_cn": "库里连短尾猫"
+    },
+    {
+      "species_id": 45,
+      "species_name": "lambkin",
+      "species_name_cn": "兰金猫"
+    },
+    {
+      "species_id": 46,
+      "species_name": "laperm",
+      "species_name_cn": "拉帕姆猫"
+    },
+    {
+      "species_id": 47,
+      "species_name": "lykoi",
+      "species_name_cn": "狼猫"
+    },
+    {
+      "species_id": 48,
+      "species_name": "maine coon",
+      "species_name_cn": "缅因库恩猫"
+    },
+    {
+      "species_id": 49,
+      "species_name": "manx",
+      "species_name_cn": "曼岛猫"
+    },
+    {
+      "species_id": 50,
+      "species_name": "minskin",
+      "species_name_cn": "明斯金猫"
+    },
+    {
+      "species_id": 51,
+      "species_name": "minuet",
+      "species_name_cn": "米努埃特猫"
+    },
+    {
+      "species_id": 52,
+      "species_name": "munchkin",
+      "species_name_cn": "曼基康猫"
+    },
+    {
+      "species_id": 53,
+      "species_name": "nebelung",
+      "species_name_cn": "尼贝龙猫"
+    },
+    {
+      "species_id": 54,
+      "species_name": "neva masquerade",
+      "species_name_cn": "尼瓦假面猫"
+    },
+    {
+      "species_id": 55,
+      "species_name": "norwegian forest cat",
+      "species_name_cn": "挪威森林猫"
+    },
+    {
+      "species_id": 56,
+      "species_name": "ocicat",
+      "species_name_cn": "奥西猫"
+    },
+    {
+      "species_id": 57,
+      "species_name": "oriental bicolor",
+      "species_name_cn": "东方双色猫"
+    },
+    {
+      "species_id": 58,
+      "species_name": "oriental longhair",
+      "species_name_cn": "东方长毛猫"
+    },
+    {
+      "species_id": 59,
+      "species_name": "oriental shorthair",
+      "species_name_cn": "东方短毛猫"
+    },
+    {
+      "species_id": 60,
+      "species_name": "persian",
+      "species_name_cn": "波斯猫"
+    },
+    {
+      "species_id": 61,
+      "species_name": "peterbald",
+      "species_name_cn": "彼得鲍德猫"
+    },
+    {
+      "species_id": 62,
+      "species_name": "pixie-bob",
+      "species_name_cn": "精灵猫"
+    },
+    {
+      "species_id": 63,
+      "species_name": "ragamuffin",
+      "species_name_cn": "拉格多尔猫"
+    },
+    {
+      "species_id": 64,
+      "species_name": "ragdoll",
+      "species_name_cn": "布偶猫"
+    },
+    {
+      "species_id": 65,
+      "species_name": "russian blue",
+      "species_name_cn": "俄罗斯蓝猫"
+    },
+    {
+      "species_id": 66,
+      "species_name": "russian white",
+      "species_name_cn": "俄罗斯白猫"
+    },
+    {
+      "species_id": 67,
+      "species_name": "savannah",
+      "species_name_cn": "萨凡纳猫"
+    },
+    {
+      "species_id": 68,
+      "species_name": "scottish fold",
+      "species_name_cn": "苏格兰折耳猫"
+    },
+    {
+      "species_id": 69,
+      "species_name": "selkirk rex",
+      "species_name_cn": "塞尔凯克卷毛猫"
+    },
+    {
+      "species_id": 70,
+      "species_name": "serengeti",
+      "species_name_cn": "塞伦盖蒂猫"
+    },
+    {
+      "species_id": 71,
+      "species_name": "siamese",
+      "species_name_cn": "暹罗猫"
+    },
+    {
+      "species_id": 72,
+      "species_name": "siberian",
+      "species_name_cn": "西伯利亚猫"
+    },
+    {
+      "species_id": 73,
+      "species_name": "singapura",
+      "species_name_cn": "新加坡猫"
+    },
+    {
+      "species_id": 74,
+      "species_name": "sokoke",
+      "species_name_cn": "索科凯猫"
+    },
+    {
+      "species_id": 75,
+      "species_name": "somali",
+      "species_name_cn": "索马里猫"
+    },
+    {
+      "species_id": 76,
+      "species_name": "sphynx",
+      "species_name_cn": "斯芬克斯猫"
+    },
+    {
+      "species_id": 77,
+      "species_name": "suphalak",
+      "species_name_cn": "苏帕拉克猫"
+    },
+    {
+      "species_id": 78,
+      "species_name": "tonkinese",
+      "species_name_cn": "东奇尼猫"
+    },
+    {
+      "species_id": 79,
+      "species_name": "toybob",
+      "species_name_cn": "玩具猫"
+    },
+    {
+      "species_id": 80,
+      "species_name": "toyger",
+      "species_name_cn": "玩具虎猫"
+    },
+    {
+      "species_id": 81,
+      "species_name": "turkish angora",
+      "species_name_cn": "土耳其安哥拉猫"
+    },
+    {
+      "species_id": 82,
+      "species_name": "turkish van",
+      "species_name_cn": "土耳其梵猫"
+    },
+    {
+      "species_id": 83,
+      "species_name": "york chocolate",
+      "species_name_cn": "约克巧克力猫"
+    }
+  ],
+  "dogs": [
+    {
+      "species_id": 84,
+      "species_name": "affenpinscher",
+      "species_name_cn": "阿芬平斯犬"
+    },
+    {
+      "species_id": 85,
+      "species_name": "afghan hound",
+      "species_name_cn": "阿富汗猎犬"
+    },
+    {
+      "species_id": 86,
+      "species_name": "african hunting dog",
+      "species_name_cn": "非洲野狗"
+    },
+    {
+      "species_id": 87,
+      "species_name": "airedale",
+      "species_name_cn": "艾尔谷犬"
+    },
+    {
+      "species_id": 88,
+      "species_name": "american staffordshire terrier",
+      "species_name_cn": "美国斯塔福德梗"
+    },
+    {
+      "species_id": 89,
+      "species_name": "appenzeller",
+      "species_name_cn": "阿彭策尔犬"
+    },
+    {
+      "species_id": 90,
+      "species_name": "australian terrier",
+      "species_name_cn": "澳大利亚梗"
+    },
+    {
+      "species_id": 91,
+      "species_name": "basenji",
+      "species_name_cn": "巴仙吉犬"
+    },
+    {
+      "species_id": 92,
+      "species_name": "basset",
+      "species_name_cn": "巴吉度犬"
+    },
+    {
+      "species_id": 93,
+      "species_name": "beagle",
+      "species_name_cn": "比格犬"
+    },
+    {
+      "species_id": 94,
+      "species_name": "bedlington terrier",
+      "species_name_cn": "贝灵顿梗"
+    },
+    {
+      "species_id": 95,
+      "species_name": "bernese mountain dog",
+      "species_name_cn": "伯恩山犬"
+    },
+    {
+      "species_id": 96,
+      "species_name": "black-and-tan coonhound",
+      "species_name_cn": "黑褐猎浣熊犬"
+    },
+    {
+      "species_id": 97,
+      "species_name": "blenheim spaniel",
+      "species_name_cn": "布伦海姆猎犬"
+    },
+    {
+      "species_id": 98,
+      "species_name": "bloodhound",
+      "species_name_cn": "寻血猎犬"
+    },
+    {
+      "species_id": 99,
+      "species_name": "bluetick",
+      "species_name_cn": "蓝色滴答猎犬"
+    },
+    {
+      "species_id": 100,
+      "species_name": "border collie",
+      "species_name_cn": "边境牧羊犬"
+    },
+    {
+      "species_id": 101,
+      "species_name": "border terrier",
+      "species_name_cn": "边境梗"
+    },
+    {
+      "species_id": 102,
+      "species_name": "borzoi",
+      "species_name_cn": "波索猎犬"
+    },
+    {
+      "species_id": 103,
+      "species_name": "boston bull",
+      "species_name_cn": "波士顿牛头犬"
+    },
+    {
+      "species_id": 104,
+      "species_name": "bouvier des flandres",
+      "species_name_cn": "法兰德斯牧牛犬"
+    },
+    {
+      "species_id": 105,
+      "species_name": "boxer",
+      "species_name_cn": "拳师犬"
+    },
+    {
+      "species_id": 106,
+      "species_name": "brabancon griffon",
+      "species_name_cn": "布鲁塞尔粗毛猎犬"
+    },
+    {
+      "species_id": 107,
+      "species_name": "briard",
+      "species_name_cn": "布里牧羊犬"
+    },
+    {
+      "species_id": 108,
+      "species_name": "brittany spaniel",
+      "species_name_cn": "布列塔尼猎犬"
+    },
+    {
+      "species_id": 109,
+      "species_name": "bull mastiff",
+      "species_name_cn": "斗牛獒犬"
+    },
+    {
+      "species_id": 110,
+      "species_name": "cairn",
+      "species_name_cn": "凯恩梗"
+    },
+    {
+      "species_id": 111,
+      "species_name": "cardigan",
+      "species_name_cn": "卡迪根威尔士柯基犬"
+    },
+    {
+      "species_id": 112,
+      "species_name": "chesapeake bay retriever",
+      "species_name_cn": "切萨皮克海湾寻猎犬"
+    },
+    {
+      "species_id": 113,
+      "species_name": "chihuahua",
+      "species_name_cn": "吉娃娃犬"
+    },
+    {
+      "species_id": 114,
+      "species_name": "chow",
+      "species_name_cn": "松狮犬"
+    },
+    {
+      "species_id": 115,
+      "species_name": "clumber",
+      "species_name_cn": "克伦伯猎犬"
+    },
+    {
+      "species_id": 116,
+      "species_name": "cocker spaniel",
+      "species_name_cn": "可卡猎犬"
+    },
+    {
+      "species_id": 117,
+      "species_name": "collie",
+      "species_name_cn": "柯利犬"
+    },
+    {
+      "species_id": 118,
+      "species_name": "curly-coated retriever",
+      "species_name_cn": "卷毛寻猎犬"
+    },
+    {
+      "species_id": 119,
+      "species_name": "dandie dinmont",
+      "species_name_cn": "丹迪丁蒙梗"
+    },
+    {
+      "species_id": 120,
+      "species_name": "dhole",
+      "species_name_cn": "豺"
+    },
+    {
+      "species_id": 121,
+      "species_name": "dingo",
+      "species_name_cn": "澳洲野犬"
+    },
+    {
+      "species_id": 122,
+      "species_name": "doberman",
+      "species_name_cn": "杜宾犬"
+    },
+    {
+      "species_id": 123,
+      "species_name": "english foxhound",
+      "species_name_cn": "英国猎狐犬"
+    },
+    {
+      "species_id": 124,
+      "species_name": "english setter",
+      "species_name_cn": "英国塞特犬"
+    },
+    {
+      "species_id": 125,
+      "species_name": "english springer",
+      "species_name_cn": "英国跳猎犬"
+    },
+    {
+      "species_id": 126,
+      "species_name": "entlebucher",
+      "species_name_cn": "恩特布尔山地犬"
+    },
+    {
+      "species_id": 127,
+      "species_name": "eskimo dog",
+      "species_name_cn": "爱斯基摩犬"
+    },
+    {
+      "species_id": 128,
+      "species_name": "flat-coated retriever",
+      "species_name_cn": "平毛寻回犬"
+    },
+    {
+      "species_id": 129,
+      "species_name": "french bulldog",
+      "species_name_cn": "法国斗牛犬"
+    },
+    {
+      "species_id": 130,
+      "species_name": "german shepherd",
+      "species_name_cn": "德国牧羊犬"
+    },
+    {
+      "species_id": 131,
+      "species_name": "german short-haired pointer",
+      "species_name_cn": "德国短毛指示犬"
+    },
+    {
+      "species_id": 132,
+      "species_name": "giant schnauzer",
+      "species_name_cn": "巨型雪纳瑞犬"
+    },
+    {
+      "species_id": 133,
+      "species_name": "golden retriever",
+      "species_name_cn": "金毛寻回犬"
+    },
+    {
+      "species_id": 134,
+      "species_name": "gordon setter",
+      "species_name_cn": "戈登塞特犬"
+    },
+    {
+      "species_id": 135,
+      "species_name": "great dane",
+      "species_name_cn": "大丹犬"
+    },
+    {
+      "species_id": 136,
+      "species_name": "great pyrenees",
+      "species_name_cn": "大比利牛斯山犬"
+    },
+    {
+      "species_id": 137,
+      "species_name": "greater swiss mountain dog",
+      "species_name_cn": "大瑞士山地犬"
+    },
+    {
+      "species_id": 138,
+      "species_name": "groenendael",
+      "species_name_cn": "格罗安达犬"
+    },
+    {
+      "species_id": 139,
+      "species_name": "ibizan hound",
+      "species_name_cn": "伊比赞猎犬"
+    },
+    {
+      "species_id": 140,
+      "species_name": "irish setter",
+      "species_name_cn": "爱尔兰塞特犬"
+    },
+    {
+      "species_id": 141,
+      "species_name": "irish terrier",
+      "species_name_cn": "爱尔兰梗"
+    },
+    {
+      "species_id": 142,
+      "species_name": "irish water spaniel",
+      "species_name_cn": "爱尔兰水猎犬"
+    },
+    {
+      "species_id": 143,
+      "species_name": "irish wolfhound",
+      "species_name_cn": "爱尔兰猎狼犬"
+    },
+    {
+      "species_id": 144,
+      "species_name": "italian greyhound",
+      "species_name_cn": "意大利灵缇犬"
+    },
+    {
+      "species_id": 145,
+      "species_name": "japanese spaniel",
+      "species_name_cn": "日本狆"
+    },
+    {
+      "species_id": 146,
+      "species_name": "keeshond",
+      "species_name_cn": "荷兰毛狮犬"
+    },
+    {
+      "species_id": 147,
+      "species_name": "kelpie",
+      "species_name_cn": "凯尔皮犬"
+    },
+    {
+      "species_id": 148,
+      "species_name": "kerry blue terrier",
+      "species_name_cn": "凯利蓝梗"
+    },
+    {
+      "species_id": 149,
+      "species_name": "komondor",
+      "species_name_cn": "科蒙多犬"
+    },
+    {
+      "species_id": 150,
+      "species_name": "kuvasz",
+      "species_name_cn": "库瓦兹犬"
+    },
+    {
+      "species_id": 151,
+      "species_name": "labrador retriever",
+      "species_name_cn": "拉布拉多寻回犬"
+    },
+    {
+      "species_id": 152,
+      "species_name": "lakeland terrier",
+      "species_name_cn": "湖区梗"
+    },
+    {
+      "species_id": 153,
+      "species_name": "leonberg",
+      "species_name_cn": "里昂贝格犬"
+    },
+    {
+      "species_id": 154,
+      "species_name": "lhasa",
+      "species_name_cn": "拉萨犬"
+    },
+    {
+      "species_id": 155,
+      "species_name": "malamute",
+      "species_name_cn": "阿拉斯加雪橇犬"
+    },
+    {
+      "species_id": 156,
+      "species_name": "malinois",
+      "species_name_cn": "比利时马利诺犬"
+    },
+    {
+      "species_id": 157,
+      "species_name": "maltese dog",
+      "species_name_cn": "马尔济斯犬"
+    },
+    {
+      "species_id": 158,
+      "species_name": "mexican hairless",
+      "species_name_cn": "墨西哥无毛犬"
+    },
+    {
+      "species_id": 159,
+      "species_name": "miniature pinscher",
+      "species_name_cn": "迷你品犬"
+    },
+    {
+      "species_id": 160,
+      "species_name": "miniature poodle",
+      "species_name_cn": "迷你贵宾犬"
+    },
+    {
+      "species_id": 161,
+      "species_name": "miniature schnauzer",
+      "species_name_cn": "迷你雪纳瑞犬"
+    },
+    {
+      "species_id": 162,
+      "species_name": "newfoundland",
+      "species_name_cn": "纽芬兰犬"
+    },
+    {
+      "species_id": 163,
+      "species_name": "norfolk terrier",
+      "species_name_cn": "诺福克梗"
+    },
+    {
+      "species_id": 164,
+      "species_name": "norwegian elkhound",
+      "species_name_cn": "挪威猎鹿犬"
+    },
+    {
+      "species_id": 165,
+      "species_name": "norwich terrier",
+      "species_name_cn": "诺里奇梗"
+    },
+    {
+      "species_id": 166,
+      "species_name": "old english sheepdog",
+      "species_name_cn": "英国古代牧羊犬"
+    },
+    {
+      "species_id": 167,
+      "species_name": "otterhound",
+      "species_name_cn": "水獭犬"
+    },
+    {
+      "species_id": 168,
+      "species_name": "papillon",
+      "species_name_cn": "蝴蝶犬"
+    },
+    {
+      "species_id": 169,
+      "species_name": "pekinese",
+      "species_name_cn": "北京犬"
+    },
+    {
+      "species_id": 170,
+      "species_name": "pembroke",
+      "species_name_cn": "彭布罗克威尔士柯基犬"
+    },
+    {
+      "species_id": 171,
+      "species_name": "pomeranian",
+      "species_name_cn": "博美犬"
+    },
+    {
+      "species_id": 172,
+      "species_name": "pug",
+      "species_name_cn": "哈巴狗"
+    },
+    {
+      "species_id": 173,
+      "species_name": "redbone",
+      "species_name_cn": "红骨猎犬"
+    },
+    {
+      "species_id": 174,
+      "species_name": "rhodesian ridgeback",
+      "species_name_cn": "罗得西亚脊背犬"
+    },
+    {
+      "species_id": 175,
+      "species_name": "rottweiler",
+      "species_name_cn": "罗威纳犬"
+    },
+    {
+      "species_id": 176,
+      "species_name": "saint bernard",
+      "species_name_cn": "圣伯纳犬"
+    },
+    {
+      "species_id": 177,
+      "species_name": "saluki",
+      "species_name_cn": "萨路基猎犬"
+    },
+    {
+      "species_id": 178,
+      "species_name": "samoyed",
+      "species_name_cn": "萨摩耶犬"
+    },
+    {
+      "species_id": 179,
+      "species_name": "schipperke",
+      "species_name_cn": "史奇派克犬"
+    },
+    {
+      "species_id": 180,
+      "species_name": "scotch terrier",
+      "species_name_cn": "苏格兰梗"
+    },
+    {
+      "species_id": 181,
+      "species_name": "scottish deerhound",
+      "species_name_cn": "苏格兰猎鹿犬"
+    },
+    {
+      "species_id": 182,
+      "species_name": "sealyham terrier",
+      "species_name_cn": "西里汉梗"
+    },
+    {
+      "species_id": 183,
+      "species_name": "shetland sheepdog",
+      "species_name_cn": "谢德兰牧羊犬"
+    },
+    {
+      "species_id": 184,
+      "species_name": "shih-tzu",
+      "species_name_cn": "狮子狗"
+    },
+    {
+      "species_id": 185,
+      "species_name": "siberian husky",
+      "species_name_cn": "西伯利亚哈士奇"
+    },
+    {
+      "species_id": 186,
+      "species_name": "silky terrier",
+      "species_name_cn": "丝毛梗"
+    },
+    {
+      "species_id": 187,
+      "species_name": "soft-coated wheaten terrier",
+      "species_name_cn": "软毛小麦梗"
+    },
+    {
+      "species_id": 188,
+      "species_name": "staffordshire bullterrier",
+      "species_name_cn": "斯塔福德斗牛梗"
+    },
+    {
+      "species_id": 189,
+      "species_name": "standard poodle",
+      "species_name_cn": "标准贵宾犬"
+    },
+    {
+      "species_id": 190,
+      "species_name": "standard schnauzer",
+      "species_name_cn": "标准雪纳瑞犬"
+    },
+    {
+      "species_id": 191,
+      "species_name": "sussex spaniel",
+      "species_name_cn": "萨塞克斯猎犬"
+    },
+    {
+      "species_id": 192,
+      "species_name": "tibetan mastiff",
+      "species_name_cn": "藏獒"
+    },
+    {
+      "species_id": 193,
+      "species_name": "tibetan terrier",
+      "species_name_cn": "西藏梗"
+    },
+    {
+      "species_id": 194,
+      "species_name": "toy poodle",
+      "species_name_cn": "玩具贵宾犬"
+    },
+    {
+      "species_id": 195,
+      "species_name": "toy terrier",
+      "species_name_cn": "玩具梗"
+    },
+    {
+      "species_id": 196,
+      "species_name": "vizsla",
+      "species_name_cn": "维兹拉猎犬"
+    },
+    {
+      "species_id": 197,
+      "species_name": "walker hound",
+      "species_name_cn": "沃克猎犬"
+    },
+    {
+      "species_id": 198,
+      "species_name": "weimaraner",
+      "species_name_cn": "魏玛犬"
+    },
+    {
+      "species_id": 199,
+      "species_name": "welsh springer spaniel",
+      "species_name_cn": "威尔士跳猎犬"
+    },
+    {
+      "species_id": 200,
+      "species_name": "west highland white terrier",
+      "species_name_cn": "西高地白梗"
+    },
+    {
+      "species_id": 201,
+      "species_name": "whippet",
+      "species_name_cn": "惠比特犬"
+    },
+    {
+      "species_id": 202,
+      "species_name": "wire-haired fox terrier",
+      "species_name_cn": "刚毛猎狐梗"
+    },
+    {
+      "species_id": 203,
+      "species_name": "yorkshire terrier",
+      "species_name_cn": "约克夏梗"
+    }
+  ]
+}
