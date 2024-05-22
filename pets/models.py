@@ -56,3 +56,5 @@ class Pet_care_diary(models.Model):
     content = models.TextField(verbose_name="日记内容")
     # 宠物体重
     weight = models.FloatField(verbose_name="宠物体重")
+    # 日期
+    diary_date = models.DateField(verbose_name="日记日期", auto_now_add=True)

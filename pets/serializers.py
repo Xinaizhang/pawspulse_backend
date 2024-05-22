@@ -40,6 +40,30 @@ class PetSerializer(serializers.ModelSerializer):
         instance.save()
         return instance
 
+
+# 宠物百科序列化器
+class PetEncyclopediaSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Pet_encyclopedia
+        fields = ['species_id', 'pet_type', 'species_name', 'species_name_cn', 'characteristic', 'care_instruction']
+
+
+# 宠物护理日记序列化器
+class PetCareDiarySerializer(serializers.ModelSerializer):
+    pet_id = serializers.IntegerField(write_only=True)
+    pet = PetSerializer(read_only=True)
+
+    class Meta:
+        model = Pet_care_diary
+        fields = ['diary_id', 'pet_id', 'content', 'weight', 'pet', 'diary_date']
+
+    # 新增宠物护理日记序列器
+    def create(self, validated_data):
+        pet_id = validated_data.pop('pet_id')
+        pet = Pet.objects.get(pet_id=pet_id)
+        diary = Pet_care_diary.objects.create(pet=pet, **validated_data)
+        return diary
+
 # class PetListSerializer(serializers.ModelSerializer):
 #     """ 宠物列表序列化器 """
 #     user = serializers.PrimaryKeyRelatedField(read_only=True, source='user.user_id')

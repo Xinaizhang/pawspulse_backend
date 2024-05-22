@@ -82,99 +82,78 @@ class PetDetailView(APIView):
                             status=status.HTTP_200_OK)
         except Pet.DoesNotExist:
             return Response(data_schema(code=404, message="Pet not found"), status=status.HTTP_404_NOT_FOUND)
-# class PetViewSet(viewsets.ViewSet):
-#     authentication_classes = []
-#
-#     def retrieve(self, request, pk=None):
-#         """ 根据 pet_id 返回宠物信息 """
-#         try:
-#             if pk is None:
-#                 raise ParseError("Pet ID is required")
-#
-#             pet = Pet.objects.get(pet_id=pk)
-#             serializer = PetDetailSerializer(pet)
-#             return Response(data_schema(status.HTTP_200_OK, "Pet retrieved successfully", serializer.data),
-#                             status.HTTP_200_OK)
-#         except Pet.DoesNotExist as e:
-#             return Response(data_schema(status.HTTP_404_NOT_FOUND, "Pet not found", str(e)),
-#                             status=status.HTTP_404_NOT_FOUND)
-#         except ParseError as e:
-#             return Response(data_schema(status.HTTP_400_BAD_REQUEST, "ParseError", str(e)),
-#                             status=status.HTTP_400_BAD_REQUEST)
-#         except Exception as e:
-#             return Response(data_schema(status.HTTP_500_INTERNAL_SERVER_ERROR, "An error occurred", str(e)),
-#                             status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-#
-#     def create(self, request):
-#         """ 新增宠物 """
-#
-#         serializer = PetCreateSerializer(data=request.data)
-#         if serializer.is_valid():
-#             try:
-#                 pet = serializer.save()  # 尝试保存宠物到数据库
-#                 return Response(data_schema(status.HTTP_201_CREATED, "Pet created successfully"),
-#                                 status=status.HTTP_201_CREATED)
-#             except (IntegrityError, DatabaseError) as e:
-#                 return Response(data_schema(status.HTTP_500_INTERNAL_SERVER_ERROR, str(e)),
-#                                 status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-#         else:
-#             return Response(data_schema(status.HTTP_400_BAD_REQUEST, "参数不正确", str(serializer.errors)),
-#                             status=status.HTTP_400_BAD_REQUEST)
-#
-#     def destroy(self, request, pk=None):
-#         """ 删除宠物 """
-#         try:
-#             if pk is None:
-#                 raise ParseError("Pet ID is required")
-#
-#             pet = Pet.objects.get(pet_id=pk)
-#             pet.delete()
-#             return Response(data_schema(status.HTTP_204_NO_CONTENT, "Pet deleted successfully"),
-#                             status.HTTP_204_NO_CONTENT)
-#         except Pet.DoesNotExist as e:
-#             return Response(data_schema(status.HTTP_404_NOT_FOUND, "Pet not found", str(e)),
-#                             status=status.HTTP_404_NOT_FOUND)
-#         except ParseError as e:
-#             return Response(data_schema(status.HTTP_400_BAD_REQUEST, "ParseError", str(e)),
-#                             status=status.HTTP_400_BAD_REQUEST)
-#         except Exception as e:
-#             return Response(data_schema(status.HTTP_500_INTERNAL_SERVER_ERROR, "An error occurred", str(e)),
-#                             status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-#
-#     def update(self, request, pk=None):
-#         """更新宠物信息"""
-#         if pk is None:
-#             return Response(data_schema(status.HTTP_400_BAD_REQUEST, "Pet ID is required"),
-#                             status=status.HTTP_400_BAD_REQUEST)
-#         try:
-#             pet = Pet.objects.get(pet_id=pk)  # 获取宠物实例
-#         except Pet.DoesNotExist:
-#             return Response(data_schema(status.HTTP_404_NOT_FOUND, "Pet not found"),
-#                             status=status.HTTP_404_NOT_FOUND)
-#
-#         serializer = PetUpdateSerializer(pet, data=request.data, partial=True)  # 使用 PetUpdateSerializer，并允许部分更新
-#         if serializer.is_valid():
-#             try:
-#                 updated_pet = serializer.save()  # 保存更新
-#                 return Response(data_schema(status.HTTP_200_OK, "Pet updated successfully", serializer.data),
-#                                 status=status.HTTP_200_OK)
-#             except Exception as e:
-#                 return Response(data_schema(status.HTTP_500_INTERNAL_SERVER_ERROR, "An error occurred", str(e)),
-#                                 status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-#         else:
-#             return Response(data_schema(status.HTTP_400_BAD_REQUEST, "Invalid parameters", serializer.errors),
-#                             status=status.HTTP_400_BAD_REQUEST)
-#
-#     def pet_by_user(self, request, user_id=None):
-#         """ 根据user_id返回用户的所有宠物 """
-#         if user_id is None:
-#             return Response(data_schema(status.HTTP_400_BAD_REQUEST, "User ID is required"),
-#                             status=status.HTTP_400_BAD_REQUEST)
-#         try:
-#             pets = Pet.objects.filter(user_id=user_id)  # 获取指定用户的所有宠物
-#             serializer = PetListSerializer(pets, many=True)
-#             return Response(data_schema(status.HTTP_200_OK, "Pets retrieved successfully", serializer.data),
-#                             status=status.HTTP_200_OK)
-#         except Exception as e:
-#             return Response(data_schema(status.HTTP_500_INTERNAL_SERVER_ERROR, "An error occurred", str(e)),
-#                             status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+# B06 - 获取宠物百科信息
+class PetEncyclopediaView(APIView):
+    def get(self, request, species_id):
+        try:
+            species = Pet_encyclopedia.objects.get(species_id=species_id)
+            serializer = PetEncyclopediaSerializer(species)
+            return Response(
+                data_schema(code=200, message="Pet encyclopedia retrieved successfully", data=serializer.data),
+                status=status.HTTP_200_OK)
+        except Pet_encyclopedia.DoesNotExist:
+            return Response(data_schema(code=404, message="Pet encyclopedia not found"),
+                            status=status.HTTP_404_NOT_FOUND)
+        except Exception as e:
+            return Response(data_schema(code=500, message="An error occurred", data=str(e)),
+                            status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+# B07 - 新增宠物护理日记
+class PetCareDiaryCreateView(APIView):
+    def post(self, request):
+        serializer = PetCareDiarySerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(data_schema(code=200, message="Pet care diary created successfully", data=serializer.data),
+                            status=status.HTTP_201_CREATED)
+        return Response(data_schema(code=400, message="Invalid data", data=serializer.errors),
+                        status=status.HTTP_400_BAD_REQUEST)
+
+
+# B08 - 修改宠物护理日记
+class PetCareDiaryUpdateView(APIView):
+    def put(self, request, diary_id):
+        try:
+            diary = Pet_care_diary.objects.get(diary_id=diary_id)
+        except Pet_care_diary.DoesNotExist:
+            return Response(data_schema(code=404, message="Pet care diary not found"), status=status.HTTP_404_NOT_FOUND)
+
+        serializer = PetCareDiarySerializer(diary, data=request.data, partial=True)
+        if serializer.is_valid():
+            updated_diary = serializer.save()
+            return Response(data_schema(code=200, message="Pet care diary updated successfully", data=serializer.data),
+                            status=status.HTTP_200_OK)
+        return Response(data_schema(code=400, message="Invalid data", data=serializer.errors),
+                        status=status.HTTP_400_BAD_REQUEST)
+
+
+# B09 - 删除宠物护理日记
+class PetCareDiaryDeleteView(APIView):
+    def delete(self, request, diary_id):
+        try:
+            diary = Pet_care_diary.objects.get(diary_id=diary_id)
+            diary.delete()
+            return Response(data_schema(code=200, message="Pet care diary deleted successfully"),
+                            status=status.HTTP_200_OK)
+        except Pet_care_diary.DoesNotExist:
+            return Response(data_schema(code=404, message="Pet care diary not found"), status=status.HTTP_404_NOT_FOUND)
+        except Exception as e:
+            return Response(data_schema(code=500, message="An error occurred", data=str(e)),
+                            status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+# B10 - 获取某宠物的所有护理日记
+class PetCareDiaryListView(APIView):
+    def get(self, request, pet_id):
+        diaries = Pet_care_diary.objects.filter(pet_id=pet_id)
+        if diaries.exists():
+            serializer = PetCareDiarySerializer(diaries, many=True)
+            return Response(
+                data_schema(code=200, message="Pet care diaries retrieved successfully", data=serializer.data),
+                status=status.HTTP_200_OK)
+        else:
+            return Response(data_schema(code=404, message="No pet care diaries found for this pet"),
+                            status=status.HTTP_404_NOT_FOUND)
